@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/midMEETdle/slick"
   },
+  "engines": {
+    "Node": "5.8.0"
+  },
   "author": "Michael Blanchard, Sandra Winkler, Bryan Kitchener, Matt McLaughlin",
   "license": "MIT",
   "bugs": {
