@@ -4,35 +4,28 @@ const server = app.listen(process.env.PORT || 3000);
 const io = require('socket.io')(server);
 const songsController = require('./controllers/songsController');
 const cors = require('cors');
-const bodyParser = require ('body-parser');
+const bodyParser = require('body-parser');
 
 app.use(cors());
-
-//body parser middleware
+// body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-
-//setting up path directory and going up one level
-app.use(express.static(__dirname + '/..'));
-
+// setting up path directory and going up one level
+app.use(express.static(`${__dirname}/..`));
 // sending the html file
 app.get('/', (req, res) => {
   res.sendFile('index.html');
 });
-
 // client logic will request this API once index.html loads
 // to retrieve stock song queue to generate list of songs
 // to render on page
 app.get('/songQueue', (req, res) => {
   res.json(songsController.playerState);
 });
-
 app.post('/search', songsController.getSpotifyData, songsController.getYouTubeData, (req, res) => {
-  //res.writeHeader(200, {'Content-Type': 'application/json'});
+  // res.writeHeader(200, {'Content-Type': 'application/json'});
   res.send(req.body.final);
 });
-
 // listen for song being clicked and added to the queue, then update everyone's state
-
 io.on('connection', socket => {
   console.log('new client connected');
   socket.on('playSong', (newSongState) => {
@@ -45,13 +38,10 @@ io.on('connection', socket => {
     songsController.playerState = newSongState;
     io.emit('updateQueue', newSongState);
   });
-
   // add playCurrent event handler
   socket.on('playCurrent', () => io.emit('playCurrent'));
-
   // add pauseCurrent event handler
   socket.on('pauseCurrent', () => io.emit('pauseCurrent'));
-
   socket.on('songEnded', (newSongState) => {
     console.log('song has ended!');
     songsController.playerState = newSongState;
