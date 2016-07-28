@@ -1,14 +1,11 @@
 'use strict';
 
 const request = require('request');
-const CLIENT_ID = require('../../client-id.js');
-//const Gracenote = require('node-gracenote');
-const PrivateKeys = require('../../privateKeys.js');
-const parseHelpers =  require('./parseHelpers.js');
+// const CLIENT_ID = require('../../client-id.js');
+// const Gracenote = require('node-gracenote');
+// const PrivateKeys = require('../../privateKeys.js');
+const parseHelpers = require('./parseHelpers.js');
 const qs = require('querystring');
-
-///////////////////////////////
-
 const songsDataController = {};
 
 songsDataController.playerState = {};
@@ -19,9 +16,8 @@ songsDataController.test = (req, res, next) => {
   req.body.artist = 'Queen';
   req.body.title = '';
   next();
-}
+};
 
-/////////////////////////////
 // SONGS DATA CONTROLLER SPOTIFY
 
 songsDataController.getSpotifyData = (req, res, next) => {
