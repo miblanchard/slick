@@ -4,3 +4,4 @@ npm-debug.log
 privateKeys.js
 .DS_Store
 /*.env
+bundle.js
