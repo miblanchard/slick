@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node_modules/.bin/gulp",
     "test": "mocha ./server/test/*.js || exit 0",
-    "start": "gulp"
+    "start": "NODE_ENV=production gulp"
   },
   "repository": {
     "type": "git",
