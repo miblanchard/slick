@@ -14,7 +14,7 @@ const SongQueue = (props) => {
         album = {songDataObject.album}
         videoId = {songDataObject.videoId}
         artistImg = {songDataObject.artistImg}
-        albumImg = {songDataObject.albumImg || 'http://3.bp.blogspot.com/-PzpJFD56NmM/U4OEGvGR5pI/AAAAAAAAIO8/s9UBNaw800A/s1600/soundcloud.png'}
+        albumImg = {songDataObject.albumImg }
         handleNewSongClick={props.handleNewSongClick}
         numberOfSongs = {props.songInfo.length}
         />)
@@ -29,3 +29,4 @@ const SongQueue = (props) => {
 }
 
 export default SongQueue;
+// || 'http://3.bp.blogspot.com/-PzpJFD56NmM/U4OEGvGR5pI/AAAAAAAAIO8/s9UBNaw800A/s1600/soundcloud.png'
