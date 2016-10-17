@@ -1,13 +1,12 @@
 import $ from 'jquery';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 import SongQueue from './components/SongQueue.jsx';
 import SongPlayer from './components/SongPlayer.jsx';
 import SongSearch from './components/SongSearch.jsx';
 
 const socket = io();
 
-class Slick extends React.Component {
+class Slick extends Component {
   constructor() {
     super();
     this.state = {
@@ -86,14 +85,14 @@ class Slick extends React.Component {
       artist: document.getElementById('song-search-artist').value,
       title: document.getElementById('song-search-title').value,
     };
-    console.log('searchData ', searchData);
+    // console.log('searchData ', searchData);
     $.ajax({
       method: 'POST',
       url: '/search',
       data: searchData,
       // contentType: 'application/json',
       error: (err) => {
-        console.log('error getting search results');
+        // console.log('error getting search results');
         console.log(err);
       },
       success: data => {
@@ -108,7 +107,7 @@ class Slick extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('state is ', this.state);
+    // console.log('state is ', this.state);
     $('#content').css('background-image', `url(${this.state.currentSong.artistImg})`);
   }
 
@@ -159,4 +158,4 @@ class Slick extends React.Component {
   }
 }
 
-ReactDOM.render(<Slick hostAddress="http://localhost:3000" />, document.getElementById('content'));
+export default Slick;
