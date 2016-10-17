@@ -57,10 +57,10 @@ class Slick extends Component {
     this.setState(newSongState);
   }
 
-  onPlay(e) { socket.emit('playCurrent'); }
+  onPlay() { socket.emit('playCurrent'); }
   handleServerPlayCurrentSongEvent() { this.state.player.playVideo(); }
 
-  onPause(e) { socket.emit('pauseCurrent'); }
+  onPause() { socket.emit('pauseCurrent'); }
   handleServerPauseCurrentSongEvent() { this.state.player.pauseVideo(); }
 
   onEnded() {
