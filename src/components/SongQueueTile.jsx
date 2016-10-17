@@ -1,13 +1,15 @@
-'use strict';
 import React from 'react';
-import SongPlayer from './SongPlayer.jsx'
 
-const SongQueueTile = (props) => {
+const SongQueueTile = ({ handleNewSongClick, itemNum, albumImg, artist, title, album, numberOfSongs }) => {
+  const newSongClick = () => {
+    handleNewSongClick(itemNum);
+  };
+
   return (
-    <div className="songs-in-queue" onClick={props.handleNewSongClick.bind(this, props.itemNum)}>
-      <img src={props.albumImg}></img><p>{props.artist} - {props.title} - {props.album} - {Number(props.itemNum) + 1} of {props.numberOfSongs}</p>
-  </div>
-  )
-}
+    <div className="songs-in-queue" onClick={newSongClick}>
+      <img src={albumImg}></img><p>{artist} - {title} - {album} - {Number(itemNum) + 1} of {numberOfSongs}</p>
+    </div>
+  );
+};
 
 export default SongQueueTile;
