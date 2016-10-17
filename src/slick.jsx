@@ -10,7 +10,7 @@ class Slick extends Component {
   constructor() {
     super();
     this.state = {
-      currentSong: '',
+      currentSong: {},
       songInfo: [], // the queue of songs
       searchResults: [],
       player: null,

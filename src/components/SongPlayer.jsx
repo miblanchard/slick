@@ -27,11 +27,11 @@ const SongPlayer = ({ currSong, onReady, onPlay, onPause, onEnded }) => (
 );
 
 SongPlayer.propTypes = {
-  currSong: PropTypes.object.isRequired,
-  onReady: PropTypes.func.isRequired,
-  onPlay: PropTypes.func.isRequired,
-  onPause: PropTypes.func.isRequired,
-  onEnded: PropTypes.func.isRequired,
+  currSong: PropTypes.object,
+  onReady: PropTypes.func,
+  onPlay: PropTypes.func,
+  onPause: PropTypes.func,
+  onEnded: PropTypes.func,
 };
 
 export default SongPlayer;

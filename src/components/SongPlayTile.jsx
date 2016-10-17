@@ -12,11 +12,11 @@ const SongPlayTile = ({ currSong: { albumImg, artist, title, album } }) => (
 );
 
 SongPlayTile.propTypes = {
-  currSong: PropTypes.object.isRequired,
-  albumImg: PropTypes.string.isRequired,
-  artist: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  album: PropTypes.string.isRequired,
+  currSong: PropTypes.object,
+  albumImg: PropTypes.string,
+  artist: PropTypes.string,
+  title: PropTypes.string,
+  album: PropTypes.string,
 };
 
 export default SongPlayTile;
