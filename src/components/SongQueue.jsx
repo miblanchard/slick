@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import SongQueueTile from './SongQueueTile.jsx';
 
 const SongQueue = ({ songInfo, handleNewSongClick }) => {
@@ -25,5 +25,9 @@ const SongQueue = ({ songInfo, handleNewSongClick }) => {
   );
 };
 
+SongQueue.propTypes = {
+  songInfo: PropTypes.object.isRequired,
+  handleNewSongClick: PropTypes.func.isRequired,
+};
+
 export default SongQueue;
-// || 'http://3.bp.blogspot.com/-PzpJFD56NmM/U4OEGvGR5pI/AAAAAAAAIO8/s9UBNaw800A/s1600/soundcloud.png'

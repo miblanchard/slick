@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 const SongPlayTile = ({ currSong: { albumImg, artist, title, album } }) => (
   <div className="song-play-tile" >
-    <img src={albumImg} />
+    <img src={albumImg} role="presentation" />
     <ul className="song-tile-list">
       <li>{artist}</li>
       <li>{title}</li>
