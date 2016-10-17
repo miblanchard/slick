@@ -1,49 +1,42 @@
-import React from 'react';
-import SongResultTile from './SongResultTile.jsx'
+import React, { PropTypes } from 'react';
+import SongResultTile from './SongResultTile.jsx';
 
-class SongSearch extends React.Component {
-
-	//create array react components with song info as props
-	createSearchResultList () {
-		let searchTileArray = [];
-		for (let i = 0; i < this.props.searchResults.length; i++) {
-			let searchResultObject = this.props.searchResults[i];
-			searchTileArray.push(
-				<SongResultTile
-          key={i}
-          addSongToQueue={this.props.addSongToQueue}
-          itemNum={i}
-					artist={searchResultObject.artist}
-					title={searchResultObject.title}
-					album={searchResultObject.album}
-					videoId={searchResultObject.videoId}
-					artistImg={searchResultObject.artistImg}
-					albumImg={searchResultObject.albumImg}
-				/>
-				)
-		}
-		return (searchTileArray.length > 0) ? searchTileArray : null;
-	}
-
-	render () {
-    return (
-		<div id="search-container">
-			<form>
-				<div className='search-bar'>
-					<input type="text" id="song-search-artist" placeholder="Artist" />
-				</div>
-				<div className='search-bar'>
-					<input type="text" id="song-search-title" placeholder="Title"/>
-				</div>
-        <button className='search-button' onClick={this.props.handleSearchEvent.bind(this)}>Search</button>
-			</form>
-      <div id='search-results-list'>
-          {this.createSearchResultList()}
+const SongSearch = ({ addSongToQueue, searchResults, handleSearchEvent }) => {
+  const searchTileArray = searchResults.map((result, i) =>
+    <SongResultTile
+      key={i}
+      addSongToQueue={addSongToQueue}
+      itemNum={i}
+      artist={result.artist}
+      title={result.title}
+      album={result.album}
+      videoId={result.videoId}
+      artistImg={result.artistImg}
+      albumImg={result.albumImg}
+    />
+  );
+  return (
+    <div id="search-container">
+      <form>
+        <div className="search-bar">
+          <input type="text" id="song-search-artist" placeholder="Artist" />
+        </div>
+        <div className="search-bar">
+          <input type="text" id="song-search-title" placeholder="Title" />
+        </div>
+        <button className="search-button" onClick={handleSearchEvent}>Search</button>
+      </form>
+      <div id="search-results-list">
+        {(searchTileArray.length > 0) ? searchTileArray : null}
       </div>
-		</div>
-    )
-	}
+    </div>
+  );
+};
 
-}
+SongSearch.propTypes = {
+  addSongToQueue: PropTypes.func.isRequired,
+  searchResults: PropTypes.array.isRequired,
+  handleSearchEvent: PropTypes.func.isRequired,
+};
 
 export default SongSearch;

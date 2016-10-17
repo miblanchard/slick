@@ -1,22 +1,22 @@
-import React from 'react';
-const divStyle = {
-  display: "none",
-};
-//style={divStyle}
-class SongPlayTile extends React.Component {
+import React, { PropTypes } from 'react';
 
-	render () {
-    return (
-  		<div className="song-play-tile" >
-  			<img src={this.props.currSong.albumImg}/>
-        <ul className="song-tile-list">
-          <li>{this.props.currSong.artist}</li>
-    			<li>{this.props.currSong.title}</li>
-    			<li>{this.props.currSong.album}</li>
-        </ul>
-  		</div>
-    )
-  }
-}
+const SongPlayTile = ({ currSong: { albumImg, artist, title, album } }) => (
+  <div className="song-play-tile" >
+    <img src={albumImg} role="presentation" />
+    <ul className="song-tile-list">
+      <li>{artist}</li>
+      <li>{title}</li>
+      <li>{album}</li>
+    </ul>
+  </div>
+);
+
+SongPlayTile.propTypes = {
+  currSong: PropTypes.object.isRequired,
+  albumImg: PropTypes.string.isRequired,
+  artist: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  album: PropTypes.string.isRequired,
+};
 
 export default SongPlayTile;

@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-class SongResultTile extends React.Component {
+const SongResultTile = ({ addSongToQueue, itemNum, albumImg, artist, title, album }) => {
+  const addSong = () => {
+    addSongToQueue(itemNum);
+  };
 
-	render () {
-    return (
-  		<div className="song-result-tile" onClick={this.props.addSongToQueue.bind(this, this.props.itemNum)}>
-  			<img src={this.props.albumImg}/>
-        <ul className="song-tile-list">
-          <li>{this.props.artist}</li>
-    			<li>{this.props.title}</li>
-    			<li>{this.props.album}</li>
-        </ul>
-  		</div>
-    )
-  }
-}
+  return (
+    <div className="song-result-tile" onClick={addSong}>
+      <img src={albumImg} role="presentation" />
+      <ul className="song-tile-list">
+        <li>{artist}</li>
+        <li>{title}</li>
+        <li>{album}</li>
+      </ul>
+    </div>
+  );
+};
+
+SongResultTile.propTypes = {
+  addSongToQueue: PropTypes.func.isRequired,
+  itemNum: PropTypes.number.isRequired,
+  artist: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  album: PropTypes.string.isRequired,
+  albumImg: PropTypes.string.isRequired,
+};
+
 
 export default SongResultTile;

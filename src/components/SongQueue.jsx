@@ -1,32 +1,33 @@
-'use strict';
-import React from 'react';
-import SongQueueTile from './SongQueueTile.jsx'
+import React, { PropTypes } from 'react';
+import SongQueueTile from './SongQueueTile.jsx';
 
-const SongQueue = (props) => {
-  //iterating over json to make song divs
-  const createList = () => {
-    return props.songInfo.map((songDataObject, i) => {
-      return (<SongQueueTile
-        key={i}
-        itemNum = {i}
-        artist={songDataObject.artist}
-        title = {songDataObject.title}
-        album = {songDataObject.album}
-        videoId = {songDataObject.videoId}
-        artistImg = {songDataObject.artistImg}
-        albumImg = {songDataObject.albumImg }
-        handleNewSongClick={props.handleNewSongClick}
-        numberOfSongs = {props.songInfo.length}
-        />)
-    })
-  }
+const SongQueue = ({ songInfo, handleNewSongClick }) => {
+  // iterating over json to make song divs
+  const songList = songInfo.map((song, i) =>
+    (<SongQueueTile
+      key={i}
+      itemNum={i}
+      artist={song.artist}
+      title={song.title}
+      album={song.album}
+      videoId={song.videoId}
+      artistImg={song.artistImg}
+      albumImg={song.albumImg}
+      handleNewSongClick={handleNewSongClick}
+      numberOfSongs={songInfo.length}
+    />)
+  );
 
   return (
     <div className="song-queue">
-      {createList()}
+      {songList}
     </div>
-  )
-}
+  );
+};
+
+SongQueue.propTypes = {
+  songInfo: PropTypes.object.isRequired,
+  handleNewSongClick: PropTypes.func.isRequired,
+};
 
 export default SongQueue;
-// || 'http://3.bp.blogspot.com/-PzpJFD56NmM/U4OEGvGR5pI/AAAAAAAAIO8/s9UBNaw800A/s1600/soundcloud.png'

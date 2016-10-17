@@ -27,9 +27,9 @@ app.post('/search', songsController.getSpotifyData, songsController.getYouTubeDa
 });
 // listen for song being clicked and added to the queue, then update everyone's state
 io.on('connection', socket => {
-  console.log('new client connected');
+  // console.log('new client connected');
   socket.on('playSong', (newSongState) => {
-    console.log('received updated Song State: ', newSongState);
+    // console.log('received updated Song State: ', newSongState);
     songsController.playerState = newSongState;
     io.emit('playSong', newSongState);
   });
@@ -43,7 +43,7 @@ io.on('connection', socket => {
   // add pauseCurrent event handler
   socket.on('pauseCurrent', () => io.emit('pauseCurrent'));
   socket.on('songEnded', (newSongState) => {
-    console.log('song has ended!');
+    // console.log('song has ended!');
     songsController.playerState = newSongState;
     io.emit('songEnded', newSongState);
   });

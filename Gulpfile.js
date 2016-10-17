@@ -1,5 +1,3 @@
-'use strict';
-
 const gulp = require('gulp');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
@@ -9,10 +7,10 @@ const nodemon = require('gulp-nodemon');
 const uglify = require('gulp-uglify');
 const streamify = require('gulp-streamify');
 const notify = require('gulp-notify');
-const gzip = require('gulp-gzip');
+// const gzip = require('gulp-gzip');
 
 const b = watchify(browserify({
-  entries: './src/main.jsx',
+  entries: './src/index.js',
   cache: {},
   packageCache: {},
   debug: true,

@@ -1,32 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { PropTypes } from 'react';
 import YouTube from 'react-youtube';
 import SongPlayTile from './SongPlayTile.jsx';
 
-class SongPlayer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const opts = {
+  height: '390',
+  width: '640',
+  playerVars: {
+    autoplay: 1,
+    fs: 0,
+    enablejsapi: 1,
+  },
+};
 
-  render() {
-    const opts = {
-      height: '390',
-      width: '640',
-      playerVars: {
-        autoplay: 1,
-        fs: 0,
-        enablejsapi: 1,
-      }
-    };
-    return (
-      <div className='song-player'>
-        <YouTube opts={opts} videoId={this.props.currSong.videoId} onReady={this.props.onReady} onPlay={this.props.onPlay} onPause={this.props.onPause} onEnd={this.props.onEnded}/>
-        <SongPlayTile currSong={this.props.currSong}/>
-      </div>
-    );
-  }
-}
+const SongPlayer = ({ currSong, onReady, onPlay, onPause, onEnded }) => (
+  <div className="song-player">
+    <YouTube
+      opts={opts}
+      videoId={currSong.videoId}
+      onReady={onReady}
+      onPlay={onPlay}
+      onPause={onPause}
+      onEnd={onEnded}
+    />
+    <SongPlayTile currSong={currSong} />
+  </div>
+);
 
-export default SongPlayer
+SongPlayer.propTypes = {
+  currSong: PropTypes.object.isRequired,
+  onReady: PropTypes.func.isRequired,
+  onPlay: PropTypes.func.isRequired,
+  onPause: PropTypes.func.isRequired,
+  onEnded: PropTypes.func.isRequired,
+};
 
-// <div>{this.props.currSong.description}</div>
+export default SongPlayer;
