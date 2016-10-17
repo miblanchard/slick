@@ -34,9 +34,9 @@ const SongSearch = ({ addSongToQueue, searchResults, handleSearchEvent }) => {
 };
 
 SongSearch.propTypes = {
-  addSongToQueue: PropTypes.func.isRequired,
-  searchResults: PropTypes.array.isRequired,
-  handleSearchEvent: PropTypes.func.isRequired,
+  addSongToQueue: PropTypes.func,
+  searchResults: PropTypes.array,
+  handleSearchEvent: PropTypes.func,
 };
 
 export default SongSearch;

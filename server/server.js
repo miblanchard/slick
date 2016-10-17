@@ -21,6 +21,12 @@ app.get('/', (req, res) => {
 app.get('/songQueue', (req, res) => {
   res.json(songsController.playerState);
 });
+app.get('/favicon.ico', (req, res) => {
+  res.send();
+});
+app.get('/untitled', (req, res) => {
+  res.send();
+});
 app.post('/search', songsController.getSpotifyData, songsController.getYouTubeData, (req, res) => {
   // res.writeHeader(200, {'Content-Type': 'application/json'});
   res.send(req.body.final);

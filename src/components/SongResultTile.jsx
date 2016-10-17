@@ -18,12 +18,12 @@ const SongResultTile = ({ addSongToQueue, itemNum, albumImg, artist, title, albu
 };
 
 SongResultTile.propTypes = {
-  addSongToQueue: PropTypes.func.isRequired,
-  itemNum: PropTypes.number.isRequired,
-  artist: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  album: PropTypes.string.isRequired,
-  albumImg: PropTypes.string.isRequired,
+  addSongToQueue: PropTypes.func,
+  itemNum: PropTypes.number,
+  artist: PropTypes.string,
+  title: PropTypes.string,
+  album: PropTypes.string,
+  albumImg: PropTypes.string,
 };
 
 

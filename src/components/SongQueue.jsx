@@ -26,8 +26,8 @@ const SongQueue = ({ songInfo, handleNewSongClick }) => {
 };
 
 SongQueue.propTypes = {
-  songInfo: PropTypes.object.isRequired,
-  handleNewSongClick: PropTypes.func.isRequired,
+  songInfo: PropTypes.array,
+  handleNewSongClick: PropTypes.func,
 };
 
 export default SongQueue;

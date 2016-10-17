@@ -13,13 +13,13 @@ const SongQueueTile = ({ handleNewSongClick, itemNum, albumImg, artist, title, a
 };
 
 SongQueueTile.propTypes = {
-  handleNewSongClick: PropTypes.func.isRequired,
-  itemNum: PropTypes.number.isRequired,
-  artist: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  album: PropTypes.string.isRequired,
-  albumImg: PropTypes.string.isRequired,
-  numberOfSongs: PropTypes.number.isRequired,
+  handleNewSongClick: PropTypes.func,
+  itemNum: PropTypes.number,
+  artist: PropTypes.string,
+  title: PropTypes.string,
+  album: PropTypes.string,
+  albumImg: PropTypes.string,
+  numberOfSongs: PropTypes.number,
 };
 
 export default SongQueueTile;
