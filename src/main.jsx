@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import SongQueue from './components/SongQueue.jsx';
 import SongPlayer from './components/SongPlayer.jsx';
 import SongSearch from './components/SongSearch.jsx';
-import request from 'request';
 
 const socket = io();
 
@@ -90,7 +89,7 @@ class Slick extends React.Component {
     console.log('searchData ', searchData);
     $.ajax({
       method: 'POST',
-      url: `${this.props.hostAddress}/search`,
+      url: '/search',
       data: searchData,
       // contentType: 'application/json',
       error: (err) => {
@@ -133,7 +132,7 @@ class Slick extends React.Component {
     // add event listener for song added and song deleted
     socket.on('songEnded', this.onEnded);
   }
-// style={{backgroundImage: 'url("https://i.scdn.co/image/8cff70e0360bb20ca403ad003108bd5c5ea5378d")'}}
+
   render() {
     // songplayer gets an empty string as props before the component mounts
     return (
@@ -160,8 +159,4 @@ class Slick extends React.Component {
   }
 }
 
-const divStyle = {
-  display: 'none',
-};
-
-ReactDOM.render(<Slick hostAddress="http://localhost:3000"/>, document.getElementById('content'));
+ReactDOM.render(<Slick hostAddress="http://localhost:3000" />, document.getElementById('content'));
